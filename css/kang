@@ -1,0 +1,70 @@
+	HTML
+	<!--Name and ID Number-->
+	<div class ="student-box">
+		<div class ="sbox-title"><span>Enter your info</span></div>
+		<div class ="sbox-name">
+			<label>Your full name: </label>
+			<input type="text" id="sbox_sname">
+		</div>
+		<div class ="sbox-number">
+			<label>Your Student ID Number:</label>
+			<input type ="text" id="sbox_snum">
+		</div>
+	    <div class="sbox_buttons">
+            <button class="exxit">Exit Quiz</button>
+            <button class="nexxt">Next</button>
+        </div>
+	</div>
+	
+	
+	JS:
+	
+const student_box = document.querySelector(".student_box");
+const exxit_btn = document.querySelector(".buttons .exit");
+const nexxt_btn = document.querySelector(".buttons .next");
+
+	CSS
+
+.student_box{
+    width: 540px;
+    background: #fff;
+    border-radius: 5px;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.student_box .sbox-title{
+    height: 60px;
+    width: 100%;
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    border-radius: 5px 5px 0 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.student_box .buttons{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 30px;
+    border-top: 1px solid lightgrey;
+}
+.sbox_buttons button{
+    margin: 0 5px;
+    height: 40px;
+    width: 100px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #007bff;
+    transition: all 0.3s ease;
+}
