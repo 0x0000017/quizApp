@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awesome Quiz App | CodingNepal</title>
+    <title>Quizbeengo!</title>
     <link rel="stylesheet" href="css/style.css">
     <!-- FontAweome CDN Link for Icons-->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -14,16 +14,19 @@
 
 	<!--Name and ID Number-->
 	<div class ="login_details">
-		<div class ="login-title"><span>Enter your info</span></div>
+		<div class ="login-title"><h3>Enter your info</h5></div>
 		<div class="login-list">
-			<div class ="login-name">
-				<label class="ln" >Your full name: </label>
-				<input class="ln" type="text" id="login_sname">
+		<form name = "logins">
+			<div class ="login-name"> 
+				<label>Your full name: </label>
+				<input class="ln" type="text" id="login_sname" name="log_name" required/>
 			</div>
+			<br>
 			<div class ="login-number">
-				<label class="ln">Your Student ID Number:</label>
-				<input class="ln" type ="text" id="login_snum">
+				<label>Your Student ID Number:</label>
+				<input class="ln" type ="text" id="login_snum" name="log_num" required/>
 			</div>
+		</form>
 		</div>
 	    <div class="buttons">
             <button class="exxit">Exit Quiz</button>
@@ -33,12 +36,16 @@
 	
     <!-- Info Box -->
     <div class="info_box">
-        <div class="info-title"><span>Some Rules of this Quiz</span></div>
+        <div class="info-title">
+			<span>Hello, </span><hr>
+			<span id = "name">studentName</span><hr> !!
+			</div>
+			<span class ="info-title">Some Rules of this Quiz</span>
         <div class="info-list">
             <div class="info">1. You will have only <span>30 seconds</span> per each question.</div>
             <div class="info">2. Once you select your answer, it can't be undone.</div>
             <div class="info">3. You can't select any option once time goes off.</div>
-            <div class="info">4. You can't exit from the Quiz while you're playing.</div>
+            <div class="info">4. You can't exit from the QuizBeengo! while you're playing.</div>
             <div class="info">5. You'll get points on the basis of your correct answers.</div>
         </div>
         <div class="buttons">
@@ -46,11 +53,19 @@
             <button class="restart">Continue</button>
         </div>
     </div>
-	
+	<div class ="bingo_area">
+		<center>
+			<a href ="#" id ="id1">B</a>&nbsp;&nbsp;
+			<a href ="#" id ="id2">I&nbsp;</a>&nbsp;&nbsp;
+			<a href ="#" id ="id3">N</a>&nbsp;&nbsp;
+			<a href ="#" id ="id4">G</a>&nbsp;&nbsp;
+			<a href ="#" id ="id5">O</a>&nbsp;&nbsp;
+		</center>
+	</div>
     <!-- Quiz Box -->
     <div class="quiz_box">
         <header>
-            <div class="title">Awesome Quiz Application</div>
+            <div class="title">QuizBeengo!</div>
             <div class="timer">
                 <div class="time_left_txt">Time Left</div>
                 <div class="timer_sec">30</div>
