@@ -15,6 +15,7 @@ const login_details = document.querySelector(".login_details");
 const exxit = login_details.querySelector(".buttons .exxit");
 const nexxt = login_details.querySelector(".buttons .nexxt");
 const print = result_box.querySelector(".buttons .print");
+const bingo_area = document.querySelector(".bingo_area");
 
 // if startQuiz button clicked
 start_btn.onclick = ()=>{
@@ -22,6 +23,7 @@ start_btn.onclick = ()=>{
 
 }
 
+// exit on login screen action
 exxit.onclick = ()=>{
     login_details.classList.remove("activeLogin"); //hide info box
 }
@@ -30,10 +32,16 @@ exxit.onclick = ()=>{
 nexxt.onclick = ()=>{
 	var lname = document.getElementById("login_sname").value;
 	var snum = document.getElementById("login_snum").value;
-	alert(lname);
-	alert(snum);
-    login_details.classList.remove("activeLogin"); //hide info box
-	info_box.classList.add("activeInfo");
+	if (document.forms['logins'].log_name.value === "" || document.forms['logins'].log_num.value === ""){
+		alert("empty");
+		var isEmpty = 1;
+		alert(isEmpty);
+	} else {
+		login_details.classList.remove("activeLogin");
+		info_box.classList.add("activeInfo");	
+		document.getElementById("name").innerHTML = lname;
+		bingo_area.classList.add("activeBingo");
+	}
 }
 
 // if exitQuiz button clicked
@@ -47,11 +55,11 @@ continue_btn.onclick = ()=>{
     quiz_box.classList.add("activeQuiz"); //show quiz box
     showQuetions(0); //calling showQestions function
     queCounter(1); //passing 1 parameter to queCounter
-    startTimer(30); //calling startTimer function
+    startTimer(15); //calling startTimer function
     startTimerLine(0); //calling startTimerLine function
 }
 
-let timeValue =  30;
+let timeValue =  15;
 let que_count = 0;
 let que_numb = 1;
 let userScore = 0;
@@ -66,7 +74,7 @@ const quit_quiz = result_box.querySelector(".buttons .quit");
 restart_quiz.onclick = ()=>{
     quiz_box.classList.add("activeQuiz"); //show quiz box
     result_box.classList.remove("activeResult"); //hide result box
-    timeValue = 30; 
+    timeValue = 15; 
     que_count = 0;
     que_numb = 1;
     userScore = 0;
@@ -81,9 +89,9 @@ restart_quiz.onclick = ()=>{
     next_btn.classList.remove("show"); //hide the next button
 }
 
+// print button
 print.onclick = ()=>{
     info_box.classList.remove("activeInfo"); //hide info box
-	alert("PASSED !");
 }
 
 // if quitQuiz button clicked
@@ -138,6 +146,10 @@ function showQuetions(index){
 let tickIconTag = '<div class="icon tick"><i class="fas fa-check"></i></div>';
 let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 
+var winner = [];
+var bingo = [1, 2, 3, 4, 5];
+var lname = document.getElementById("login_sname").value;
+var beengo = 0;
 //if user clicked on option
 function optionSelected(answer){
     clearInterval(counter); //clear counter
@@ -148,6 +160,31 @@ function optionSelected(answer){
     
     if(userAns == correcAns){ //if user selected option is equal to array's correct answer
         userScore += 1; //upgrading score value with 1
+		
+		// if the answer is right
+		// generate random number from the array bingo
+		function shuffle(o) {
+			for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+			return o;
+		}
+		var rng = shuffle(bingo);
+		var pick = rng[0];
+		console.log("Random Number:" +pick);
+		winner.push(pick);
+		document.getElementById('id'+pick).style.color = 'gold';
+		console.log("Array Length: " +winner.length);
+		for (i = 0; i < winner.length; i++)
+			console.log("Numbers in array:Index " +i+ ": contains " + winner[i]);
+		//////////////////////////////////////////////////////////////////////////////
+		/////////															/////////
+		////////															////////
+		///////																///////		
+		//////		the only function relevant to our project				//////
+		/////																/////
+		////																////
+		///																	///
+		//////////////////////////////////////////////////////////////////////
+		
         answer.classList.add("correct"); //adding green color to correct selected option
         answer.insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to correct selected option
         console.log("Correct Answer");
@@ -168,16 +205,42 @@ function optionSelected(answer){
     for(i=0; i < allOptions; i++){
         option_list.children[i].classList.add("disabled"); //once user select an option then disabled all options
     }
+	
     next_btn.classList.add("show"); //show the next button if user selected any option
+	winner.sort(); // sort the fking array
+	let finder =[1,2,3,4,5];
+	
+	let arrayRes = finder.every(i =>winner.includes(i));
+	console.log(arrayRes);
+	
+	if (arrayRes === true) {
+		
+		alert("Beengo ! , " +lname+" You've got 50 bonus points !");
+		passToValue();
+		
+	}
 }
+		function passValue(){
+			var beengo = beengo + 1;
+			return beengo;
+		}
+		function passToValue(){
+			var y = passValue();
+			showResult();
+		}
+		
 
 function showResult(){
+	
     info_box.classList.remove("activeInfo"); //hide info box
     quiz_box.classList.remove("activeQuiz"); //hide quiz box
     result_box.classList.add("activeResult"); //show result box
     const scoreText = result_box.querySelector(".score_text");
-    if (userScore > 3){ // if user scored more than 3
-        //creating a new span tag and passing the user score number and total question number
+	if (beengo >= 1) {
+		let scoreTag = '<span>and congrats! 🎉, You got 60 points out of <p>'+ questions.length +'questions</p></span>';
+		scoreText.innerHTML = scoreTag;
+	}
+    if (userScore > 3){
         let scoreTag = '<span>and congrats! 🎉, You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
         scoreText.innerHTML = scoreTag;  //adding new span tag inside score_Text
     }

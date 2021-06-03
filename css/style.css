@@ -8,7 +8,7 @@
 }
 
 body{
-    background: #007bff;
+    background: #FFD75A;
 }
 
 ::selection{
@@ -22,16 +22,18 @@ body{
 .quiz_box,
 .result_box{
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
                 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+
 .info_box.activeInfo,
 .login_details.activeLogin,
 .quiz_box.activeQuiz,
+.bingo_area.activeBingo,
 .result_box.activeResult{
     opacity: 1;
     z-index: 5;
@@ -463,4 +465,33 @@ footer button.show{
     border-radius: 5px;
     border: 1px solid #007bff;
     transition: all 0.3s ease;
+}
+.login_details .login-list .login span{
+    font-weight: 600;
+    color: #007bff;
+}
+
+.bingo_area {
+    position: absolute;
+	opacity: 0;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.bingo_area a{
+	text-align: center;
+	color: black;
+	border-radius: 15px;
+	background-color: #007BFF;
+	text-decoration: none;
+	padding: 10px;	
+	font-size: 35px;
+}
+.bingo_area p-active {
+	color: #FFD75A;
+	background-color: black;
+	border-radius: 15px;
+	padding: 10px;
 }

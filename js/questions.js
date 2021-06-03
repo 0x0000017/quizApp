@@ -54,19 +54,61 @@ let questions = [
       "eXTra Multi-Program Language",
       "eXamine Multiple Language"
     ]
-  },
-  // you can uncomment the below codes and make duplicate as more as you want to add question
-  // but remember you need to give the numb value serialize like 1,2,3,5,6,7,8,9.....
+  }, 
 
-  //   {
-  //   numb: 6,
-  //   question: "Your Question is Here",
-  //   answer: "Correct answer of the question is here",
-  //   options: [
-  //     "Option 1",
-  //     "option 2",
-  //     "option 3",
-  //     "option 4"
-  //   ]
-  // },
+ {
+	numb: 6,
+	question: "What is OOP?",
+	answer: "Object-Oriented Programming",
+	options: [
+			"Out-of Place",
+			"Object-Oriented Programming",
+			"I dont know",
+			"I have no idea"
+			]
+  },
+  {
+	numb: 7,
+	question: "Is HTML programming language?",
+	answer: "No",
+	options: [
+			"Yes",
+			"No",
+			"I dont know",
+			"I have no idea"
+			]
+  },
+  {
+	numb: 8,
+	question: "What type of language is HTML?",
+	answer: "Markup Language",
+	options: [
+			"Programming Language",
+			"Markup Language",
+			"Language of the gods",
+			"I only know CSS"
+			]
+  },
+  {
+	numb: 9,
+	question: "Is PHP server-sided ?",
+	answer: "Yes",
+	options: [
+			"It's a currency",
+			"Client Sided",
+			"No",
+			"Yes"
+			]
+  },
+  {
+	numb: 10,
+	question: "Can you see the PHP codes on client side?",
+	answer: "No",
+	options: [
+			"No",
+			"Yes",
+			"I dont know",
+			"I only know ASP"
+			]
+  },
 ];
